@@ -1,5 +1,4 @@
 import {Book, Employee, Reader} from "./types";
-import {readers} from "./data";
 
 // Zad 1
 export const getDevelopers = (employees: Employee[]) => {
