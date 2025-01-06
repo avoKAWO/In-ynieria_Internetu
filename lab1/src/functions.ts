@@ -1,5 +1,7 @@
-import {Employee} from "./types";
+import {Book, Employee, Reader} from "./types";
+import {readers} from "./data";
 
+// Zad 1
 export const getDevelopers = (employees: Employee[]) => {
     return employees.filter(e => e.position === "Developer");
 }
@@ -14,4 +16,26 @@ export function addExperience(employee: Employee, language: string) {
 
 export function addExperiences(employees: Employee[], language: string) {
     return employees.map(e => e.programmingLanguages.push(language));
+}
+
+// Zad 2
+export function findBook(catalog: Book[], title: string) {
+    return catalog.find(e => e.title === title);
+}
+
+export function getAvailableBooks(catalog: Book[]) {
+    return catalog.filter(e => !e.isBorrowed);
+}
+
+export function borrowBook(books: Book[], title: string, reader: Reader) {
+    return books.map((book) => {
+        if (book.title === title && !book.isBorrowed) {
+            return {
+                ...book,
+                isBorrowed: true,
+                borrower: reader,
+            };
+        }
+        return book;
+    });
 }
